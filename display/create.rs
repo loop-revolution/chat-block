@@ -16,9 +16,7 @@ impl ChatBlock {
 		_context: &Context,
 		_user_id: i32,
 	) -> Result<CreationObject, LoopError> {
-		let header = TextComponent::heading("New Chat Block");
-
-		let name_input = InputComponent {
+		let header = InputComponent {
 			label: Some("Name".to_string()),
 			name: Some("NAME".to_string()),
 			..InputComponent::default()
@@ -28,7 +26,6 @@ impl ChatBlock {
 		);
 
 		let mut main = StackComponent::vertical();
-		main.push(name_input);
 		main.push(people_invite);
 
 		let template = r#"{ "name": $[NAME]$ }"#.to_string();
